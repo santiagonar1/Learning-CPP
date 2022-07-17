@@ -9,7 +9,7 @@ int main(int, char **) {
   const int DIME_TO_CENT = 10;
   const int QUARTER_TO_CENT = 25;
   const int HALF_DOLLAR_TO_CENT = 50;
-  const int DOLLAR_DOLLAR_TO_CENT = 200;
+  const int DOLLAR_TO_CENT = 100;
 
   std::cout << "Indicate your money:\n";
   std::cout << "pennies > ";
@@ -28,7 +28,9 @@ int main(int, char **) {
   int cents = pennies * PENNY_TO_CENT + nickels * NICKEL_TO_CENT +
               dimes * DIME_TO_CENT + quarters * QUARTER_TO_CENT +
               half_dollars * HALF_DOLLAR_TO_CENT +
-              dollar_coins * DOLLAR_DOLLAR_TO_CENT;
+              dollar_coins * DOLLAR_TO_CENT;
+  int dollars = cents / DOLLAR_TO_CENT;
+  cents %= DOLLAR_TO_CENT;
 
   std::cout << "\n****************************\n";
   std::cout << "You have " << pennies << " pennies\n";
@@ -37,5 +39,5 @@ int main(int, char **) {
   std::cout << "You have " << quarters << " quarters\n";
   std::cout << "You have " << half_dollars << " half dollars\n";
   std::cout << "You have " << dollar_coins << " dollar coins\n";
-  std::cout << "The value of all your coins is " << cents << " cents.\n";
+  std::cout << "The value of all your coins is $" << dollars << "." << cents <<".\n";
 }
