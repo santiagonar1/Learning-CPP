@@ -13,15 +13,20 @@ int main(int, char **) {
   std::cout << "> ";
   std::cin >> money >> c;
 
-  if (c == 'y') {
+  switch (c) {
+  case 'y':
     std::cout << money << " dollars =" << money * dollar_per_yen << " yen\n";
-  } else if (c == 'k') {
+    break;
+  case 'k':
     std::cout << money << " dollars =" << money * dollar_per_kroner
               << " kroner\n";
-  } else if (c == 'p') {
+    break;
+  case 'p':
     std::cout << money << " dollars =" << money * dollar_per_pound
               << " pounds\n";
-  } else {
+    break;
+  default:
     std::cout << "I cannot recognize " << c << "\n";
+    break;
   }
 }
