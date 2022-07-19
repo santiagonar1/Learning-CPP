@@ -1,10 +1,8 @@
 #include <iostream>
 
 int main(int, char **) {
-  char c = 'a';
 
-  while (c <= 'z') {
+  for (char c = 'a'; c <= 'z'; ++c) {
     std::cout << c << '\t' << int(c) << '\n';
-    ++c;
   }
 }
