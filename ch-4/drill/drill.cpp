@@ -5,6 +5,12 @@
 #include <string>
 #include <vector>
 
+double cm_to_m(double val_in_cm);
+double inch_to_cm(double val_in_inch);
+double inch_to_m(double val_in_inch);
+double ft_to_inch(double val_in_ft);
+double ft_to_m(double val_in_ft);
+
 int main(int, char **) {
   double val = 0;
   std::string unit = "";
@@ -12,9 +18,6 @@ int main(int, char **) {
   double smallest = std::numeric_limits<double>::max();
   double largest = std::numeric_limits<double>::min();
 
-  constexpr double cm_in_m = 100;
-  constexpr double cm_in_inch = 2.54;
-  constexpr double inch_in_ft = 12;
   double sum = 0;
   std::vector<double> values;
 
@@ -24,12 +27,11 @@ int main(int, char **) {
         valid_units.end()) {
 
       if (unit == "cm") {
-        val /= cm_in_m;
+        val = cm_to_m(val);
       } else if (unit == "in") {
-        val = (val * cm_in_inch) / cm_in_m;
+        val = inch_to_m(val);
       } else if (unit == "ft") {
-        const double val_in_inch = val * inch_in_ft;
-        val = (val_in_inch * cm_in_inch) / cm_in_m;
+        val = ft_to_m(val);
       }
 
       values.push_back(val);
@@ -51,8 +53,31 @@ int main(int, char **) {
   }
 
   std::sort(values.begin(), values.end());
-  for (double val: values) {
-      std::cout << val << "m\n";
+  for (double val : values) {
+    std::cout << val << "m\n";
   }
   std::cout << "Total: " << sum << "m\n";
+}
+
+double cm_to_m(double val_in_cm) {
+  constexpr double cm_in_m = 100;
+  return val_in_cm / cm_in_m;
+}
+
+double inch_to_cm(double val_in_inch) {
+  constexpr double cm_in_inch = 2.54;
+  return val_in_inch * cm_in_inch;
+}
+
+double inch_to_m(double val_in_inch) {
+  return cm_to_m(inch_to_cm(val_in_inch));
+}
+
+double ft_to_inch(double val_in_ft) {
+  constexpr double inch_in_ft = 12;
+  return val_in_ft * inch_in_ft;
+}
+
+double ft_to_m(double val_in_ft) {
+  return cm_to_m(inch_to_cm(ft_to_inch(val_in_ft)));
 }
