@@ -1,17 +1,22 @@
+#include <cmath>
 #include <iostream>
+#include <limits>
 
 int main(int, char **) {
-  double val1 = 0;
-  double val2 = 0;
+  double val = 0;
+  double smallest = std::numeric_limits<double>::max();
+  double largest = std::numeric_limits<double>::min();
 
   std::cout << "> ";
-  while (std::cin >> val1 >> val2) {
-    if (val1 < val2) {
-      std::cout << "Smaller is: " << val1 << "\tLarger is: " << val2 << '\n';
-    } else if (val2 < val1) {
-      std::cout << "Smaller is: " << val2 << "\tLarger is: " << val1 << '\n';
-    } else {
-      std::cout << "Numbers are equal\n";
+  while (std::cin >> val) {
+    if (val < smallest) {
+        std::cout << "The smallest so far: " << val << '\n';
+        smallest = val;
+    }
+    
+    if (largest < val) {
+        std::cout << "The largest so far: " << val << '\n';
+        largest = val;
     }
   }
 }
