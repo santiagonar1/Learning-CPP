@@ -16,6 +16,7 @@ int main(int, char **) {
   constexpr double cm_in_inch = 2.54;
   constexpr double inch_in_ft = 12;
   double sum = 0;
+  std::vector<double> values;
 
   std::cout << "> ";
   while (std::cin >> val >> unit) {
@@ -31,6 +32,7 @@ int main(int, char **) {
         val = (val_in_inch * cm_in_inch) / cm_in_m;
       }
 
+      values.push_back(val);
       sum += val;
 
       if (val < smallest) {
@@ -48,5 +50,8 @@ int main(int, char **) {
     }
   }
 
+  for (double val: values) {
+      std::cout << val << "m\n";
+  }
   std::cout << "Total: " << sum << "m\n";
 }
