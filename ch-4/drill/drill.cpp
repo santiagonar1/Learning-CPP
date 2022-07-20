@@ -50,6 +50,7 @@ int main(int, char **) {
     }
   }
 
+  std::sort(values.begin(), values.end());
   for (double val: values) {
       std::cout << val << "m\n";
   }
