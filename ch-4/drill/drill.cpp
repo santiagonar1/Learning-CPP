@@ -1,10 +1,10 @@
 #include <iostream>
 
 int main(int, char **) {
-  std::cout << "> ";
-
   double val1 = 0;
   double val2 = 0;
+
+  std::cout << "> ";
   while (std::cin >> val1 >> val2) {
     if (val1 < val2) {
       std::cout << "Smaller is: " << val1 << "\tLarger is: " << val2 << '\n';
