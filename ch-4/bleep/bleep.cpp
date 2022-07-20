@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 int main(int, char **) {
-  const std::string bleep = "Broccoli";
+  const std::vector<std::string> bleeps = {"Broccoli", "Meat"};
   std::vector<std::string> words;
 
   std::cout << "Please give your input\n";
@@ -13,7 +14,7 @@ int main(int, char **) {
   }
 
   for (std::string word : words) {
-    if (word == bleep) {
+    if (std::find(bleeps.begin(), bleeps.end(), word) != bleeps.end()) {
       std::cout << "BLEEP ";
     } else {
       std::cout << word << " ";
