@@ -10,6 +10,8 @@ int main(int, char **) {
       std::cout << "Smaller is: " << val1 << "\tLarger is: " << val2 << '\n';
     } else if (val2 < val1) {
       std::cout << "Smaller is: " << val2 << "\tLarger is: " << val1 << '\n';
+    } else {
+      std::cout << "Numbers are equal\n";
     }
   }
 }
