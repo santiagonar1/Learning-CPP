@@ -1,9 +1,24 @@
 #include <iostream>
+#include <time.h>
 #include <vector>
 
 int main(int, char **) {
 
-  std::vector<char> machine_selections = {'r', 'p', 's'};
+  /* initialize random seed: */
+  srand(time(NULL));
+
+  unsigned int num_plays = 0;
+  std::cout << "How many games do you want to play?\n";
+  std::cout << "> ";
+  std::cin >> num_plays;
+
+  const std::vector<char> possible_selections = {'r', 'p', 's'};
+
+  std::vector<char> machine_selections;
+  for (unsigned int i = 0; i < num_plays; ++i) {
+    const int index_selection = int(rand() % possible_selections.size());
+    machine_selections.push_back(possible_selections[index_selection]);
+  }
 
   while (!machine_selections.empty()) {
     std::cout << machine_selections.size() << " Games left\n";
