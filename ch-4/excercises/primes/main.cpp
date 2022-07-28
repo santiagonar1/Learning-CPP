@@ -5,8 +5,12 @@ bool is_prime(const unsigned int number,
               const std::vector<unsigned int> primes);
 
 int main(int, char **) {
-  constexpr unsigned int upper_bound = 100;
+  unsigned int upper_bound = 0;
   constexpr unsigned int first_prime = 2;
+
+  std::cout << "Indicate up to which number you want to find primes:\n";
+  std::cout << "> ";
+  std::cin >> upper_bound;
 
   std::vector<unsigned int> primes = {first_prime};
   for (unsigned int i = first_prime + 1; i < upper_bound; ++i) {
