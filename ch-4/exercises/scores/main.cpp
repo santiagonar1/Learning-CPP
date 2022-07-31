@@ -33,16 +33,17 @@ int main(int, char **) {
   for (int i = 0; i < names.size(); ++i) {
     std::cout << "[" << i + 1 << "] " << names[i] << " " << scores[i] << '\n';
   }
+
+  std::cout << "\n\n";
+  std::string search_name = " ";
+  std::cout << "Indicate the searching name\n";
+  std::cout << "> ";
+  std::cin >> search_name;
 }
 
 bool repeated_names(std::vector<std::string> names) {
   std::sort(names.begin(), names.end());
+  auto iter = std::adjacent_find(names.begin(), names.end());
 
-  for (int i = 1; i < names.size(); ++i) {
-    if (names[i] == names[i - 1]) {
-      return true;
-    }
-  }
-
-  return false;
+  return iter == names.end() ? false : true;
 }
