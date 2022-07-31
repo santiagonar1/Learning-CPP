@@ -10,6 +10,10 @@ bool repeated_names(std::vector<std::string> names);
 long get_index_name(const std::vector<std::string> names,
                     const std::string name);
 
+// Return all indices on which score is stored.
+std::vector<long> get_score_indices(const std::vector<int> scores,
+                                    const int score);
+
 int main(int, char **) {
   const std::string termination_name = "NoName";
   std::string name = " ";
@@ -52,6 +56,21 @@ int main(int, char **) {
     std::cout << "[" << index_name + 1 << "] " << names[index_name] << " "
               << scores[index_name] << '\n';
   }
+
+  std::cout << "\n\n";
+  int search_score = 0;
+  std::cout << "Indicate the searching score\n";
+  std::cout << "> ";
+  std::cin >> search_score;
+
+  std::vector<long> score_indices = get_score_indices(scores, search_score);
+  if (score_indices.empty()) {
+    std::cout << "Score " << search_score << " not found\n";
+  } else {
+    for (auto i : score_indices) {
+      std::cout << "[" << i + 1 << "] " << names[i] << " " << scores[i] << '\n';
+    }
+  }
 }
 
 bool repeated_names(std::vector<std::string> names) {
@@ -70,4 +89,18 @@ long get_index_name(const std::vector<std::string> names,
   } else {
     return -1;
   }
+}
+
+std::vector<long> get_score_indices(const std::vector<int> scores,
+                                    const int score) {
+  std::vector<long> indices;
+  auto it = std::find(scores.begin(), scores.end(), score);
+
+  while (it != scores.end()) {
+    indices.push_back(it - scores.begin());
+    ++it;
+    it = std::find(it, scores.end(), score);
+  }
+
+  return indices;
 }
