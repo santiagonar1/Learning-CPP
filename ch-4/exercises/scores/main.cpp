@@ -5,6 +5,11 @@
 
 bool repeated_names(std::vector<std::string> names);
 
+// Get index of name. If name is not in the vector, it
+// returns -1
+long get_index_name(const std::vector<std::string> names,
+                    const std::string name);
+
 int main(int, char **) {
   const std::string termination_name = "NoName";
   std::string name = " ";
@@ -39,6 +44,14 @@ int main(int, char **) {
   std::cout << "Indicate the searching name\n";
   std::cout << "> ";
   std::cin >> search_name;
+
+  const long index_name = get_index_name(names, search_name);
+  if (index_name == -1) {
+    std::cout << "Name " << search_name << " not found\n";
+  } else {
+    std::cout << "[" << index_name + 1 << "] " << names[index_name] << " "
+              << scores[index_name] << '\n';
+  }
 }
 
 bool repeated_names(std::vector<std::string> names) {
@@ -46,4 +59,15 @@ bool repeated_names(std::vector<std::string> names) {
   auto iter = std::adjacent_find(names.begin(), names.end());
 
   return iter == names.end() ? false : true;
+}
+
+long get_index_name(const std::vector<std::string> names,
+                    const std::string name) {
+  auto it = std::find(names.begin(), names.end(), name);
+
+  if (it != names.end()) {
+    return it - names.begin();
+  } else {
+    return -1;
+  }
 }
