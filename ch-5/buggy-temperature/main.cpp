@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 
 int main(int, char **) {
   std::vector<double> temps;
@@ -12,8 +13,8 @@ int main(int, char **) {
   }
 
   double sum = 0;
-  double max_temp = 0;
-  double min_temp = 0;
+  double max_temp = std::numeric_limits<double>::min();
+  double min_temp = std::numeric_limits<double>::max();
 
   for (double temp: temps) {
       if (temp > max_temp) max_temp = temp;
