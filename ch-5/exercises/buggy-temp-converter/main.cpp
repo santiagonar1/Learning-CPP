@@ -4,9 +4,14 @@ double ctok(double c);
 
 int main(int, char **) {
   double c = 0;
+  constexpr double absolute_zero = -273.5;
   std::cout << "Introduce temp. in Celsius\n";
   std::cout << "> ";
   std::cin >> c;
+  if (c < absolute_zero) {
+    std::cout << "Error: Temperature below " << absolute_zero << "\n";
+    return 1;
+  }
   double k = ctok(c);
   std::cout << k << '\n';
 }
