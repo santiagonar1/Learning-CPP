@@ -22,7 +22,7 @@ double ctok(double c) {
   constexpr double absolute_zero = -273.5;
 
   if (c < absolute_zero) {
-    std::cout << "Error: Temperature below " << absolute_zero << "\n";
+    std::cout << "Error: Temperature below " << absolute_zero << "C \n";
     throw TemperatureError{};
   }
 
