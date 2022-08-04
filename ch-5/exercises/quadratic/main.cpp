@@ -13,10 +13,10 @@ int main(int, char **) {
   const double inside_sqrt = b * b - 4 * a * c;
 
   if (inside_sqrt < 0) {
-    std::cout << "ERROR: No real roots\n";
+    std::cerr << "ERROR: No real roots\n";
     return 1;
   } else if (a == 0) {
-    std::cout << "ERROR: No quadratic function\n";
+    std::cerr << "ERROR: No quadratic function\n";
     return 2;
   }
 

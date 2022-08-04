@@ -22,13 +22,13 @@ int main(int, char **) {
       values.push_back(value);
       std::cin >> input;
     } catch (std::invalid_argument) {
-      std::cout << "ERROR: " << input << " Not a number\n";
+      std::cerr << "ERROR: " << input << " Not a number\n";
       input = "|";
     }
   }
 
   if (values.size() < num_values) {
-    std::cout << "ERROR: Not enough values on the vector\n";
+    std::cerr << "ERROR: Not enough values on the vector\n";
     return 1;
   }
 

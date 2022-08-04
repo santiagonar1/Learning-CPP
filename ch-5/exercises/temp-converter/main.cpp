@@ -20,7 +20,7 @@ int main(int, char **) {
     std::cout << f_to_c(f) << " C\n";
     return 0;
   } catch (TempError) {
-    std::cout << "ERROR: Temperature too low\n";
+    std::cerr << "ERROR: Temperature too low\n";
     return 1;
   }
 }
