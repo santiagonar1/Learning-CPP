@@ -9,6 +9,7 @@ template <class R, class A> R narrow_cast(const A &a);
 
 int main(int, char **) {
   std::vector<double> values;
+  std::vector<double> differences;
 
   int num_values = 0;
   std::cout << "Please indicate the number of values you want to sum:\n";
@@ -43,6 +44,16 @@ int main(int, char **) {
       std::accumulate(values.begin(), values.begin() + num_values, 0.0);
 
   std::cout << "Result: " << sum << '\n';
+
+  for (int i = 1; i < values.size(); i++) {
+    differences.push_back(values[i] - values[i - 1]);
+  }
+
+  std::cout << "Differences: ";
+  for (auto v : differences) {
+    std::cout << v << " ";
+  }
+  std::cout << "\n";
 }
 
 // run-time checked narrowing cast (type conversion).
