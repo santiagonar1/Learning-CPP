@@ -17,9 +17,14 @@ int main(int, char **) {
   std::cin >> input;
 
   while (input != "|") {
-    const int value = std::stoi(input);
-    values.push_back(value);
-    std::cin >> input;
+    try {
+      const int value = std::stoi(input);
+      values.push_back(value);
+      std::cin >> input;
+    } catch (std::invalid_argument) {
+      std::cout << "ERROR: " << input << " Not a number\n";
+      input = "|";
+    }
   }
 
   if (values.size() < num_values) {
