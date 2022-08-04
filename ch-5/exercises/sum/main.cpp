@@ -3,13 +3,13 @@
 #include <string>
 #include <vector>
 
+
 class NarrowError {};
 
 template <class R, class A> R narrow_cast(const A &a);
 
 int main(int, char **) {
   std::vector<double> values;
-  std::vector<double> differences;
 
   int num_values = 0;
   std::cout << "Please indicate the number of values you want to sum:\n";
@@ -45,9 +45,9 @@ int main(int, char **) {
 
   std::cout << "Result: " << sum << '\n';
 
-  for (int i = 1; i < values.size(); i++) {
-    differences.push_back(values[i] - values[i - 1]);
-  }
+  std::vector<double> differences(values.size());
+  std::adjacent_difference(values.begin(), values.end(), differences.begin());
+  differences.erase(differences.begin());
 
   std::cout << "Differences: ";
   for (auto v : differences) {
