@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include <time.h>
 #include <vector>
 
 class NoMoreDigits {};
@@ -11,6 +12,9 @@ int get_new_digit(const std::vector<int> existing_values);
 int main(int, char **) {
   constexpr int num_values = 4;
   std::vector<int> values;
+
+  /* initialize random seed: */
+  srand(time(NULL));
 
   for (int i = 0; i < num_values; i++) {
     const int new_digit = get_new_digit(values);
